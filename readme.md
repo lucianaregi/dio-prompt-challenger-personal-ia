@@ -11,113 +11,99 @@
 </p>
 
 <p align="center">
-  <h3 align="center">🏋️‍♂️ Assistente de Personal Trainer - Gerador de Treino Ideal</h3>
-Este projeto é um desafio de Prompt Engineer, onde o objetivo é criar um prompt que ajuda a montar o treino ideal para cada combinação de fatores, como biotipo corporal, disponibilidade de tempo e tipo de exercícios preferidos. O assistente de personal trainer gerado por esse prompt será capaz de personalizar os treinos de acordo com as características e necessidades do usuário.
-O projeto deve ser feito utilizando as boas práticas de prompt engineer.
+  <h3 align="center">🏋️‍♂️ Assistente de Personal Trainer Automatizado</h3>
+Este projeto é um **assistente de personal trainer automatizado** que gera planos de treino personalizados para usuários. Com base nas informações fornecidas, como nome, idade, peso, altura, biotipo corporal, disponibilidade de tempo, entre outras, o assistente cria um plano de treino ajustado para atender aos objetivos de cada usuário, como ganho de massa muscular, perda de peso, ou definição muscular.
+
+O assistente utiliza variáveis para armazenar as respostas e recomendações, permitindo uma integração fácil em sistemas automatizados. 
 </p>
+---
 
-## 📋 Índice
+## 🌐 Tecnologias utilizadas
 
-- [📋 Índice](#-índice)
-- [📝 Introdução](#-introdução)
-- [💪 Biotipos Corporais](#-biotipos-corporais)
-- [📅 Dias Disponíveis para Treino](#-dias-disponíveis-para-treino)
-- [🏋️ Tipos de Exercícios](#️-tipos-de-exercícios)
-- [🛠️ Regras de negócio](#️-regras-de-negócio)
-- [📖 Material de Apoio](#-material-de-apoio)
-- [🎯 Prompt de Resposta Proposto](#-prompt-de-resposta-proposto)
+Amazon Bedrock: Plataforma dedicada à criação e implementação de assistentes virtuais de personal trainer.
+
+Engenharia de Prompts: Desenvolvimento de prompts organizados para facilitar a interação com o modelo.
+
+
+---
+## 📝 Estrutura de Variáveis
+
+O assistente utiliza as seguintes variáveis para personalizar o plano de treino:
+| Variável | Descrição |
+| --- | --- |
+| `{{nome}}` | Nome do usuário |
+| `{{idade}}` | Idade do usuário |
+| `{{peso}}` | Peso do usuário (em kg) |
+| `{{altura}}` | Altura do usuário (em metros) |
+| `{{classificação_IMC}}` | Classificação do IMC calculado |
+| `{{recomendacao_IMC}}` | Recomendação de treino com base no IMC |
+| `{{biotipo}}` | Biotipo corporal (Ectomorfo, Mesomorfo, Endomorfo) |
+| `{{dias_treino}}` | Número de dias que o usuário pode treinar por semana |
+| `{{tempo_sessao}}` | Tempo disponível para cada sessão de treino |
+| `{{tempo_total_treino}}` | Tempo total de treino semanal calculado |
+| `{{tipo_exercicio}}` | Tipo de exercício preferido pelo usuário |
+| `{{objetivo}}` | Objetivo do usuário (Ganho de Massa, Perda de Peso, etc.) |
+| `{{nivel_experiencia}}` | Nível de experiência (Iniciante, Intermediário, Avançado) |
+| `{{lesoes_restricoes}}` | Histórico de lesões ou restrições físicas |
+| `{{preferencia_exercicio}}` | Preferência entre resistência muscular ou explosão |
+| `{{descricao_plano}}` | Descrição personalizada do plano de treino |
+| `{{sugestao_progressao}}` | Sugestão de progressão nos treinos |
+| `{{saudacao_inicial}}` | Saudação inicial personalizada com base na hora do dia |
 
 ---
 
-## 📝 Introdução
+## 📖 Exemplo de Interação
 
-Este projeto visa criar um assistente de personal trainer automatizado que ajuda a gerar treinos personalizados. O usuário fornecerá informações como o biotipo corporal, a quantidade de dias disponíveis para treinar na semana e o tipo de exercício preferido, e o assistente gerará um plano de treino ideal com base nessas informações.
+Assistente: Bom dia! Vamos criar um plano de treino personalizado para você. Antes de começarmos, preciso de algumas informações para garantir que o plano se encaixe perfeitamente nas suas necessidades.
 
----
+Assistente: Qual é o seu nome?
+Usuário: Ana
 
-## 💪 Biotipos Corporais
+Assistente: Quantos anos você tem?
+Usuário: 32
 
-A primeira regra para personalizar o treino é determinar o biotipo corporal do usuário. Existem três biotipos principais:
+Assistente: Qual é o seu peso em kg?
+Usuário: 68
 
-<table>
-  <tr>
-    <th>Imagem</th>
-    <th>Biotipo</th>
-    <th>Descrição</th>
-  </tr>
-  <tr>
-    <td style="text-align: center;">
-      <img src=".github/assets/ectomorph.jpg" width="50%" height="50%">
-    </td>
-    <td><strong>Ectomorfo</strong></td>
-    <td>Corpo mais magro, difícil ganhar peso e massa muscular.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">
-      <img src=".github/assets/mesomorph.jpg" width="50%" height="50%">
-    </td>
-    <td><strong>Mesomorfo</strong></td>
-    <td>Corpo naturalmente musculoso, facilidade para ganhar massa muscular e perder gordura.</td>
-  </tr>
-  <tr>
-    <td style="text-align: center;">
-      <img src=".github/assets/endmorph.jpg" width="50%" height="50%">
-    </td>
-    <td><strong>Endomorfo</strong></td>
-    <td>Corpo com tendência a acumular gordura, maior dificuldade em perder peso.</td>
-  </tr>
-</table>
+Assistente: Qual é a sua altura em metros?
+Usuário: 1.65
 
-> **Nota:** Escolha o biotipo que mais se aproxima do seu corpo atual para que o treino seja mais eficiente.
+Assistente: Com base nas suas informações, seu IMC é de 24.98. Isso classifica você como Peso Normal. Como seu IMC está na faixa de Peso Normal, é recomendado que você comece com um plano de treinos equilibrado, variando entre treinos de resistência e ganho de massa muscular.
+
+...
+
+Resumo do Plano de Treino:
+| Dia        | Tipo de Treino | Grupo Muscular     | Séries | Repetições | Duração |
+|------------|----------------|--------------------|--------|------------|---------|
+| Segunda    | Full Body      | Corpo Inteiro      | 3      | 15         | 1 hora  |
+| Quarta     | ABC - A        | Peito e Costas     | 4      | 12         | 1 hora  |
+| Sexta      | ABC - B        | Pernas e Ombros    | 4      | 12         | 1 hora  |
 
 ---
+Detalhamento dos Exercícios:
 
-## 📅 Dias Disponíveis para Treino
+#### Exercício 1 - Supino Reto com Halteres:
+Descrição: Deite-se em um banco plano, segure os halteres com as palmas voltadas para a frente e empurre para cima até que os braços estejam estendidos.
+Sugestão de Carga: Moderada
+Séries: 4 | Repetições: 12
+Justificativa: Este exercício é ideal para fortalecer o peitoral, ajudando na definição muscular, que é o objetivo de Ana. Como ela tem 32 anos e um nível intermediário, pode ser realizada com cargas moderadas.
+#### Passo a Passo:
+Deite-se em um banco com os pés firmemente no chão.
+Segure os halteres na altura dos ombros, com as palmas voltadas para a frente.
+Empurre os halteres para cima, estendendo os braços.
+Abaixe os halteres lentamente até a posição inicial.
+Aquecimento: 5 minutos de caminhada leve para ativar o corpo.
+Alongamento Pós-Treino: Realize 2 séries de 30 segundos de alongamento para peitoral e ombros.
 
-A segunda regra é determinar quantos dias por semana o usuário tem disponível para treinar. Dependendo do número de dias, o treino sugerido pode variar:
+Assistente: Gostaria de ajustar algum aspecto do plano, como a intensidade dos exercícios ou adicionar mais sessões de cardio?
+Usuário: Sim, gostaria de dicas para progredir nos treinos.
+Assistente: Ótimo, Ana! Aqui está uma sugestão de progressão: 'Aumente a carga em 5% a cada duas semanas para continuar desafiando seus músculos e melhorando a definição.'
 
-| **Imagem**                                                     | **Dias por Semana** | **Tipo de Treino Sugerido** |
-| -------------------------------------------------------------- | ------------------- | --------------------------- |
-| <img src=".github/assets/calendar.png" width="50" height="50"> | 1 dia               | Treino Full Body            |
-| <img src=".github/assets/calendar.png" width="50" height="50"> | 3 dias              | Treino ABC                  |
-| <img src=".github/assets/calendar.png" width="50" height="50"> | 5 dias              | Treino ABCDE                |
-
-- **Full Body**: Treino que trabalha o corpo todo em uma única sessão.
-- **ABC**: Divisão do treino em três dias, cada um focado em grupos musculares diferentes.
-- **ABCDE**: Divisão do treino em cinco dias, com foco ainda mais específico em cada grupo muscular.
-
----
-
-## 🏋️ Tipos de Exercícios
-
-A terceira regra envolve a escolha do tipo de exercício preferido. Aqui estão algumas categorias com exemplos:
-
-| **Imagem**                                                       | **Tipo de Treino** | **Descrição**                                                                                                 |
-| ---------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| <img src=".github/assets/dumbells.png" width="50%" height="50%"> | **Funcional**      | Exercícios que melhoram a funcionalidade do corpo, usando movimentos naturais.                                |
-| <img src=".github/assets/4760665.png" width="50%" height="50%">  | **Maquinário**     | Exercícios feitos em máquinas, com foco em isolar grupos musculares.                                          |
-| <img src=".github/assets/barr.png" width="50%" height="50%">     | **Peso Livre**     | Exercícios com pesos livres, como halteres e barras, para trabalhar vários grupos musculares simultaneamente. |
-| <img src=".github/assets/cardio.png" width="50%" height="50%">   | **Cardio**         | Exercícios voltados para melhorar a resistência cardiovascular, como corrida ou ciclismo.                     |
-| <img src=".github/assets/hiit.png" width="50%" height="50%">     | **HIIT**           | Treinos intervalados de alta intensidade, ótimos para queima de gordura.                                      |
 
 ---
-
-## 🛠️ Regras de negócio
-
-1. **Identifique seu biotipo corporal** consultando a seção de biotipos.
-2. **Determine quantos dias por semana você pode treinar** e escolha o tipo de treino mais adequado.
-3. **Selecione o tipo de exercício** que prefere realizar e que se encaixa melhor nos seus objetivos.
-4. Use o prompt do assistente para gerar um plano de treino personalizado.
+## Licença
+Este projeto está licenciado sob a Licença MIT.
 
 ---
-
-## 📖 Material de Apoio
-
-Aqui estão alguns recursos adicionais que podem ser úteis para entender melhor o projeto e as práticas de prompt engineering:
-
-- [Fundamentos de Engenharia de prompt](https://elidianaandrade.gitbook.io/fundamentos-de-engenharia-de-prompts-com-claude-3)
-- [Boas práticas de prompt](https://aline-antunes.gitbook.io/otimize-seus-prompts-e-aprenda-mais-usando-ias-1)
-
----
-
-## 🎯 Prompt de Resposta Proposto
+## Autor
+Desenvolvido por <a href="https://github.com/lucianaregi">Luciana Rocha</a>
